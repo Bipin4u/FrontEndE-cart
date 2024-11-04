@@ -1,0 +1,110 @@
+/* Header Layout */
+.HeaderCardLayout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #008374;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Company Name Styling */
+  .CompanyNameLayout {
+    color: #EC4444;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  /* Menu Layout */
+  .MenuCardLayout {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .MenuCardLayout li {
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .MenuCardLayout li:hover {
+    color: #073e37;
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+  .MenuCardLayout a {
+    text-decoration: none;
+    color: aliceblue;
+  }
+  
+  /* Login and Cart Layout */
+  .LoginCartLayout {
+    display: flex;
+    align-items: center;
+  }
+  
+  .LoginCartLayout div {
+    padding: 10px 15px;
+    color: aliceblue;
+    font-size: 16px;
+  }
+  
+  .noborder_hr {
+    margin: 0;
+    border: none;
+    border-radius: 2px;
+    background: #f8f8f8;
+    height: 3px;
+  }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
+    .HeaderCardLayout {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+    }
+  
+    .CompanyNameLayout {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    .MenuCardLayout {
+      flex-direction: column;
+      width: 100%;
+      background-color: #00796b;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+  
+    .MenuCardLayout li {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  
+    .MenuCardLayout li:last-child {
+      border-bottom: none;
+    }
+  
+    .LoginCartLayout {
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .LoginCartLayout div {
+      width: 48%;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #00796b;
+      border-radius: 5px;
+      margin: 5px 0;
+    }
+  }
+  

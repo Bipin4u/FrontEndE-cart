@@ -1,0 +1,76 @@
+.SectionContainer {
+    height: auto; /* Allow the height to adjust based on content */
+    padding: 20px; /* Add padding for spacing */
+    text-align: center; /* Center-align text for better readability on small screens */
+    background-color: #008374;
+    padding-bottom: 150px;
+    margin-bottom: -200px;
+  }
+  
+  .landing_section p:nth-child(1) {
+    font-size: 40px; /* Smaller font size for mobile */
+    font-weight: bold;
+  }
+  
+  .landing_section p:nth-child(2) {
+    font-size: 55px; /* Smaller font size for mobile */
+    font-weight: bold;
+    color: rgba(236, 68, 68, 0.896);
+  }
+  
+  .landing_section p:nth-child(3) {
+    font-size: 16px; /* Smaller font size for better readability on mobile */
+    margin-top: 15px;
+  }
+  
+  .landingsectionimage {
+    height: auto;
+    width: 100%; /* Adjust image width to fit within the mobile view */
+    max-width: 600px; /* Prevent the image from becoming too large on larger mobile screens */
+    margin-top: 20px; /* Add spacing between text and image */
+  }
+  
+  
+  
+  .Watchvedio a {
+    background-color: #008374;
+    color: white;
+    padding: 10px 20px; /* Adjust padding for better touch targets */
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; /* Slightly larger font for better readability on mobile */
+  }
+  
+  @media (min-width: 768px) {
+    .sectionContainer {
+        height: 92vh; /* Restore the full viewport height on larger screens */
+        flex-direction: row; /* Revert to row layout on larger screens */
+        justify-content: space-between;
+        text-align: left; /* Align text to the left on larger screens */
+    }
+  
+    .landing_section_left p:nth-child(1) {
+        font-size: 60px; /* Restore original font size */
+    }
+  
+    .landing_section_left p:nth-child(2) {
+        font-size: 70px; /* Restore original font size */
+    }
+  
+    .landing_section_left p:nth-child(3) {
+        font-size: 17px; /* Restore original font size */
+    }
+  
+    .landingsectionimage {
+        height: 500px; /* Restore original image height */
+        width: auto;
+        margin-top: 0; /* Remove extra spacing on larger screens */
+    }
+  
+    .landing_section_right {
+        justify-content: flex-end; /* Align image to the right on larger screens */
+    }
+  }
+  

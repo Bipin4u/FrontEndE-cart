@@ -1,0 +1,118 @@
+/* Base Styles */
+.what-we-do-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 40px 20px 0px 20px;
+    border-radius: 15px;
+    /* margin-top: -250px; */
+}
+
+.heading {
+    font-size: 3.2rem; /* Slightly smaller font size */
+    text-align: center;
+    margin-bottom: 40px;
+    color: rgba(236, 68, 68, 0.896);
+    border-bottom: 3px solid rgba(236, 68, 68, 0.896); /* Thinner border */
+    padding-bottom: 15px;
+
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* Default direction */
+}
+
+.section.reverse {
+    flex-direction: row-reverse; /* Reverse direction for specific sections */
+}
+
+.WhatWeDIImage {
+    width: 40%; /* Slightly larger width */
+    height: 300px;
+    border-radius: 10px; /* Slightly larger radius */
+}
+
+.text-content {
+    width: 60%; /* Increased width for better text space */
+    padding: 20px;
+    margin: 5%;
+    
+}
+
+.subheading {
+    font-size: 2.2rem; /* Slightly smaller font size */
+    color: #008374;
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    text-align: left;
+
+}
+
+.text {
+    font-size: 1.2rem; /* Slightly smaller font size */
+    line-height: 1.6;
+    color: #495057;
+    text-align: left;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .heading {
+        font-size: 2.8rem; /* Slightly smaller for medium screens */
+    }
+
+    .subheading {
+        font-size: 1.8rem; /* Slightly smaller for medium screens */
+    }
+
+    .text {
+        font-size: 1.1rem; /* Slightly smaller for medium screens */
+    }
+
+    .image {
+        width: 50%;
+    }
+
+    .text-content {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .what-we-do-container {
+        width: 90%;
+        padding: 20px 0px;
+    }
+
+    .heading {
+        font-size: 2.2rem; /* Smaller font size for mobile */
+    }
+
+    .subheading {
+        font-size: 1.6rem; /* Smaller font size for mobile */
+    }
+
+    .text {
+        font-size: 1rem; /* Smaller font size for mobile */
+    }
+
+    .section {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+
+    .section.reverse {
+        flex-direction: column; /* Ensure reverse layout is also stacked */
+    }
+
+    .image {
+        width: 100%;
+        margin-bottom: 20px; /* Add space between image and text */
+    }
+
+    .text-content {
+        width: 100%;
+        padding: 10px; /* Reduce padding for better fit */
+    }
+}

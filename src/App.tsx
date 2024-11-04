@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Register from "./component/pages/layout/Register";
+import Login from "./component/pages/layout/Login";
+import Header from "./component/common/layout/Header";
+import PrivateRoute from "./component/utils/PrivateRoute";
+import AuthProvider from "./component/context/AuthContext";
+import HomeComponent from "./component/pages/layout/HomeComponent";
+import SingleItemPage from "./component/pages/layout/SingleItemPage";
+import CategoryList from "./component/pages/layout/CategoryList";
+import { PrimeReactProvider } from 'primereact/api';
+import 'primereact/resources/themes/saga-blue/theme.css';
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+       <PrimeReactProvider>
+      <AuthProvider>
+      <Header />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<HomeComponent />} />
+          <Route path="/item/:id" element={<SingleItemPage />} />
+          <Route path="/category-list/:category" element={<CategoryList />} />
+
+
+        </Route>
+      </Routes>
+      </AuthProvider>
+      </PrimeReactProvider>
+    </Router>
   );
-}
+};
 
 export default App;

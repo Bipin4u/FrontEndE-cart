@@ -1,0 +1,225 @@
+.Product_container {
+    text-align: center;
+    height: fit-content;
+    
+  }
+  
+  .product_link {
+    text-decoration: none;
+  }
+  
+  .product_heading {
+    font-size: 60px;
+    margin: 25px;
+    font-weight: bold;
+  }
+  
+  
+  /* Responsive Heading */
+  @media screen and (max-width: 768px) {
+    .product_heading {
+      font-size: 40px;
+      margin: 20px;
+    }
+  }
+  
+  /* Container for the buttons with horizontal scrolling */
+  .product-heading-section {
+    display: flex;
+    padding: 10px; /* Adjust padding as needed */
+    justify-content: space-around;
+  }
+  
+  /* Ensure buttons are displayed in a row */
+  .product-heading-section button {
+    font-size: 18px;
+    border-radius: 8px;
+    color: white;
+    padding: 12px 20px;
+    min-width: 120px; /* Minimum width for the buttons */
+    border: none;
+    background-color: #008374;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  /* Hide scrollbar (optional) for a cleaner look */
+  .product-heading-section::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Product Grid Styles */
+  .Product_item_display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Product Card Styles */
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-image-section {
+    overflow: hidden;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .product-info {
+    padding: 15px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .product-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-title {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .product-name {
+    color: #777;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-style: italic;
+  }
+  
+  .product-discount_price {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e53935;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Product_priceType {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .product-discount_price::before {
+    content: "₹";
+    margin-right: 5px;
+    font-size: 1.1rem;
+    color: #e53935;
+  }
+  
+  .product-discount_price::after {
+    content: "/-";
+    margin-left: 5px;
+    font-size: 1.1rem;
+    color: #e53935;
+  }
+  
+  .product-info h4,
+  .product-info p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .product-info p {
+    line-height: 1.5;
+  }
+  
+  .product_rating_type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .product_rating_container {
+    margin-left: 20px;
+  }
+  
+  .product_price_container {
+    display: flex;
+    align-items: center;
+    margin: 3px;
+  }
+  
+  .product_price_container p {
+    margin: 0 7px;
+  }
+  
+  .product_discount {
+    color: #064d41;
+  }
+  
+  .product_price {
+    color: #5f5d5d;
+    margin: 5px 0;
+    font-size: 1.13rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Responsive Adjustments */
+  @media screen and (max-width: 1024px) {
+    .Product_item_display {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .product-heading-section {
+      display: flex;
+      overflow-x: auto; /* Enable horizontal scrolling */
+      padding: 10px; /* Adjust padding as needed */
+      white-space: nowrap; /* Prevent buttons from wrapping */
+      flex-wrap: nowrap; /* Prevent wrapping */
+    }
+  
+    .product-title,
+    .product_rating_container,
+    .product_discount,
+    .product_price {
+      display: none;
+    }
+    .product-name{
+      margin: 0;
+      text-align: start;
+    }
+  
+    .product-name,
+    .product-discount_price {
+      font-size: 1rem;
+    }
+    .product-info{
+      padding: 5px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Product_item_display {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

@@ -1,0 +1,239 @@
+/* General Styles for the Page */
+.item-detail {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Title and Image Section */
+  .item-detail h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+  }
+  
+  .item-detail img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Image Section */
+  .item_main_image {
+    flex-grow: .5;
+    margin: auto;   
+    height: fit-content;
+    width: fit-content;
+  }
+  
+  
+  
+  /* Details Section */
+  .item-detail p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .item-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  .item-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  /* Price Section */
+  .item-price, .item-discount_price, .item_discount {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .item-discount_price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e53935;
+  }
+  
+  .item-discount_price::before {
+    content: "₹";
+    margin-right: 5px;
+  }
+  
+  .item-discount_price::after {
+    content: "/-";
+    margin-left: 5px;
+  }
+  
+  .item_discount {
+    font-size: 1.2rem;
+    color: #064d41;
+  }
+  
+  .item-discount {
+    font-size: 1.2rem;
+    color: #064d41;
+    margin-top: 5px;
+  }
+  
+  /* Image Gallery */
+  .item-images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    /* border-bottom: 5px solid rgb(163, 158, 158); */
+    
+    
+  }
+  
+  .item-thumbnails {
+    display: flex;
+    height: 500px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    border: 5px solid rgb(163, 158, 158);
+    border-radius: 5px;
+    scroll-behavior: auto;
+    
+  }
+  
+  .item-thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   
+  }
+  
+  .item-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Feature Tabs */
+  .item_other_features {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: space-between;
+  }
+  
+  .item_other_features div {
+    cursor: pointer;
+    padding: 12px 25px;
+    margin-right: 10px;
+    border: 1px solid #004d40;
+    background-color: #00796b;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .item_other_features div:hover {
+    background-color: #009688;
+  }
+  
+  .item_other_features div.active {
+    background-color: #004d40;
+  }
+  
+  /* Feature Content */
+  .item-feature-content {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #004d40;
+    background-color: #f1f1f1;
+    color: #004d40;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item-feature-content p {
+    margin: 0 0 10px;
+  }
+  
+  .item-feature-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .item-feature-content ul li {
+    margin-bottom: 5px;
+  }
+  .item_type{
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  .item_add_flex{
+    display: flex;
+  }
+  .item_add_flex p{
+    margin: 0px 15px 0px 0px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .item-images{
+      display: block;
+    }
+    .item-detail {
+      padding: 15px;
+    }
+  
+    .item-detail h1 {
+      font-size: 2rem;
+    }
+  
+    .item-detail img {
+      max-height: 400px;
+  
+    }
+  
+    .item-thumbnails {
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 20px;
+      height: fit-content;
+      border:none;
+    }
+  
+    .item-thumbnail {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .item_other_features{
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .item_other_features div {
+      margin-bottom: 10px;
+      padding: 7px 15px;
+    }
+  }
+  
