@@ -10,6 +10,7 @@ import SingleItemPage from "./component/pages/layout/SingleItemPage";
 import CategoryList from "./component/pages/layout/CategoryList";
 import { PrimeReactProvider } from 'primereact/api';
 import 'primereact/resources/themes/saga-blue/theme.css';
+import Cart from "./component/pages/layout/Cart";
 
 
 const App = () => {
@@ -25,8 +26,7 @@ const App = () => {
           <Route path="/" element={<HomeComponent />} />
           <Route path="/item/:id" element={<SingleItemPage />} />
           <Route path="/category-list/:category" element={<CategoryList />} />
-
-
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
       </AuthProvider>

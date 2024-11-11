@@ -6,34 +6,22 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Rating from './Rating'
 
-
-
-function Products() {
-    const [filterText, setFilterText] = useState("sofa");
-    const [items, setItems] = useState<any>([]); 
-
-
-    useEffect(() => {    
-      axios.get(`http://127.0.0.1:8000/api/items/?type=${filterText}`)
-        .then(res => {
-          setItems(res.data);  
-          console.log(res);   
-        })
-        .catch(error => {
-          console.error('There was an error fetching the items!', error);
-        });
-    }, [filterText]);
-
+interface  productCategory {
+  title:string,
+  items:any,
+  filter:React.Dispatch<React.SetStateAction<string>>
+}
+const Products:React.FC<productCategory>=({title,items,filter})=> {
     return (
       <div className="Product_container container">
-        <p className="product_heading">Popular Items</p>
+        <p className="product_heading">{title}</p>
         <div className="product-heading-section">
-          <button onClick={() => setFilterText('sofa')}>Sofa</button>
-          <button onClick={() => setFilterText('recliner')}>Recliner</button>
-          <button onClick={() => setFilterText('dyning')}>Dyning</button>
-          <button onClick={() => setFilterText('bed')}>Bed</button>
-          <button onClick={() => setFilterText('office_&_study_table')}>Table</button>      
-          <button onClick={() => setFilterText('chair')}>Chair</button>
+          <button onClick={() => filter('sofa')}>Sofa</button>
+          <button onClick={() => filter('recliner')}>Recliner</button>
+          <button onClick={() => filter('dining')}>Dyning</button>
+          <button onClick={() => filter('bed')}>Bed</button>
+          <button onClick={() => filter('office_study_table')}>Table</button>      
+          <button onClick={() => filter('chair')}>Chair</button>
         </div>
         <div className="Product_item_display">
 

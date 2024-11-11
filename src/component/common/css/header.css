@@ -13,6 +13,7 @@
     color: #EC4444;
     font-size: 28px;
     font-weight: bold;
+    margin:0px
   }
   
   /* Menu Layout */
@@ -62,49 +63,11 @@
   
   /* Mobile View */
   @media (max-width: 768px) {
-    .HeaderCardLayout {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px;
+    .MenuCardLayout  {
+      display: none;
     }
-  
-    .CompanyNameLayout {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-  
-    .MenuCardLayout {
-      flex-direction: column;
-      width: 100%;
-      background-color: #00796b;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-  
-    .MenuCardLayout li {
-      padding: 12px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-  
-    .MenuCardLayout li:last-child {
-      border-bottom: none;
-    }
-  
-    .LoginCartLayout {
-      justify-content: space-between;
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .LoginCartLayout div {
-      width: 48%;
-      text-align: center;
-      padding: 12px;
-      font-size: 16px;
-      background-color: #00796b;
-      border-radius: 5px;
-      margin: 5px 0;
+    .CartLayout  {
+      display: none;
     }
   }
   

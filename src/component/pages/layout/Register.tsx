@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/register.css';  
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/register/', { username, email, password });
+            const response = await axios.post('http://127.0.0.1:8000/auth/users/', 
+                { username:username, email:email, password:password });
             console.log('Registration successful:', response.data);
+            navigate('/login')
         } catch (error: any) {
             console.error('Registration error:', error.response ? error.response.data : error.message);
         }

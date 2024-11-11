@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import { Link, useLocation  } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../css/header.css";
 import { AuthContext } from "../../context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { Badge } from "primereact/badge";
+import SideBar from "./SideBar";
 
 const Header = () => {
-  const { user, userLogout } = useContext(AuthContext);
+  const { user, userLogout, cartQuantity } = useContext(AuthContext);
   const [menu, setMenu] = React.useState("home");
   const location = useLocation();
 
@@ -46,34 +47,41 @@ const Header = () => {
               </li>
             </div>
             <div className="LoginCartLayout">
-              <div className="CartLayout">Cart</div>
-              <div style={{ cursor: "pointer" }} onClick={userLogout}>
-                Logout
+              <div className="CartLayout">
+                <Link to="/cart" style={{ textDecoration: "none", color:'white' }}>
+                  <i
+                    className="pi pi-shopping-cart p-overlay-badge"
+                    style={{ fontSize: "1.7rem" }}
+                  >
+                    <Badge style={{backgroundColor:"#EC4444"}} value={cartQuantity}></Badge>
+                  </i>
+                </Link>
               </div>
+              <SideBar />
               :
             </div>
           </>
         ) : (
           <>
-          <div className="LoginCartLayout">
-            {location.pathname !== "/login" && (
-              <Link
-                className="mx-3"
-                style={{ textDecoration: "none", color: "white" }}
-                to="/login"
-              >
-                Login
-              </Link>
-            )}
-            {location.pathname !== "/register" && (
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/register"
-              >
-                Register
-              </Link>
-            )}
-          </div>
+            <div className="LoginCartLayout">
+              {location.pathname !== "/login" && (
+                <Link
+                  className="mx-3"
+                  style={{ textDecoration: "none", color: "white" }}
+                  to="/login"
+                >
+                  Login
+                </Link>
+              )}
+              {location.pathname !== "/register" && (
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to="/register"
+                >
+                  Register
+                </Link>
+              )}
+            </div>
           </>
         )}
       </div>

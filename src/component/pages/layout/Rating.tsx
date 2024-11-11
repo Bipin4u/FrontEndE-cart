@@ -17,7 +17,7 @@ const Rating = (props : ratingProp) => {
           key={star}
           style={{
             fontSize: '2rem',
-            color: star <= (hover || props.rating) ? 'gold' : 'gray',
+            color: star <= (hover || props.rating) ? '#008374' : 'gray',
             cursor: 'pointer',
             marginRight: '5px',
           }}

@@ -1,27 +1,29 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/singleItemPage.css";
 import Rating from "./Rating";
 import { AuthContext } from "../../context/AuthContext";
-
+import { Button } from "primereact/button";
+import { Toast } from 'primereact/toast';
 
 const SingleItemPage = () => {
-  const {authToken} = useContext(AuthContext)
+  const { authToken, addCartDetails } = useContext(AuthContext);
   const { id } = useParams();
   const [item, setItem] = useState<any>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedFeature, setSelectedFeature] = useState("features"); // New state to track selected feature
-  const [mainImage, setMainImage] = useState('');
+  const [mainImage, setMainImage] = useState("");
+  const toast = useRef<Toast>(null);
 
-  const renderFeatureContent = (type:string) => {
+  const renderFeatureContent = (type: string) => {
     switch (type) {
       case "features":
         return (
           <div>
             <ul>
-              {item.features.map((feature : any, index : number) => (
+              {item.features.map((feature: any, index: number) => (
                 <li key={index}>{feature}</li>
               ))}
             </ul>
@@ -70,17 +72,25 @@ const SingleItemPage = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/item/${id}/`)
-      .then(res => {
+    axios
+      .get(`http://127.0.0.1:8000/api/item/${id}/`)
+      .then((res) => {
         setItem(res.data);
-        console.log(res.data)
+        console.log(res.data);
         setMainImage(res.data.images[0].image_path);
         setLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching item:', error);
+      .catch((error) => {
+        console.error("Error fetching item:", error);
       });
   }, []);
+
+  const addCartDetail = async (item: number) => {
+    const type = 'increment'
+    addCartDetails(item,type);
+    toast.current?.show({severity:'success', summary: 'Success', detail:'Item added to cart', life: 3000});
+
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching item data</p>;
@@ -88,44 +98,88 @@ const SingleItemPage = () => {
 
   return (
     <div className="item-detail">
-      <h1>{item.name}</h1>
+      <Toast ref={toast} />
       <div className="item-images">
         <div className="item-thumbnails">
-          {item.images.map((img : any, index : number) => (
-            <img className="item-thumbnail"  onClick={() => { setMainImage(img.image_path) }} key={index} src={img.image_path} alt={`${item.name} image ${index + 1}`} />
+          {item.images.map((img: any, index: number) => (
+            <img
+              className="item-thumbnail"
+              onClick={() => {
+                setMainImage(img.image_path);
+              }}
+              key={index}
+              src={img.image_path}
+              alt={`${item.name} image ${index + 1}`}
+            />
           ))}
         </div>
 
         <div className="item_main_image">
-          <img
-            src={mainImage}
-            alt={item.name}
-
-          />
+          <img src={mainImage} alt={item.name} />
         </div>
       </div>
       <div>
+      <h2>{item.name}</h2>
         <h2 className="item_type">{item.type}</h2>
-        
-          <div className="item_add_flex">
+
+        <div className="item_add_flex">
           <p> Price :</p>
-          <p className="item-discount_price"> {item.discount_price?.toLocaleString()} </p>
-          <p className="item_price"> <s>{item.price?.toLocaleString()}</s> </p>
-          <p className="item_discount">{item.discount?.toLocaleString()}% OFF</p>
-          
-          
-          </div>
-          <p className="item-description">{item.description}</p>
+          <p className="item-discount_price product-discount_price">
+            {" "}
+            {item.discount_price?.toLocaleString()}{" "}
+          </p>
+          <p className="item_price product_price">
+            {" "}
+            <s>{item.price?.toLocaleString()}</s>{" "}
+          </p>
+          <p className="item_discount product_discount">
+            {item.discount?.toLocaleString()}% OFF
+          </p>
+        </div>
+        <p className="item-description">{item.description}</p>
         <Rating rating={item.rating} reviews_count={item.reviews_count} />
+        <div className="m-2 card flex justify-content-center">
+        <Button onClick={() => addCartDetail(item.id)} style={{ backgroundColor: "#008374" }} label="Add to Cart" />        </div>
       </div>
       <div>
-        <div className="item_other_features"><div onClick={() => setSelectedFeature("features")} className={selectedFeature === "features" ? "active" : ""}>Features</div>
-          <div onClick={() => setSelectedFeature("dimensions")} className={selectedFeature === "dimensions" ? "active" : ""}>Dimension</div>
-          <div onClick={() => setSelectedFeature("warranty")} className={selectedFeature === "warranty" ? "active" : ""}>  Warranty </div>
-          <div onClick={() => setSelectedFeature("package")} className={selectedFeature === "package" ? "active" : ""}> Package Details </div>
-          <div onClick={() => setSelectedFeature("material")} className={selectedFeature === "material" ? "active" : ""}> Material </div>
+        <div className="item_other_features">
+          <div
+            onClick={() => setSelectedFeature("features")}
+            className={selectedFeature === "features" ? "active" : ""}
+          >
+            Features
+          </div>
+          <div
+            onClick={() => setSelectedFeature("dimensions")}
+            className={selectedFeature === "dimensions" ? "active" : ""}
+          >
+            Dimension
+          </div>
+          <div
+            onClick={() => setSelectedFeature("warranty")}
+            className={selectedFeature === "warranty" ? "active" : ""}
+          >
+            {" "}
+            Warranty{" "}
+          </div>
+          <div
+            onClick={() => setSelectedFeature("package")}
+            className={selectedFeature === "package" ? "active" : ""}
+          >
+            {" "}
+            Package Details{" "}
+          </div>
+          <div
+            onClick={() => setSelectedFeature("material")}
+            className={selectedFeature === "material" ? "active" : ""}
+          >
+            {" "}
+            Material{" "}
+          </div>
         </div>
-        <div className="item-feature-content">{renderFeatureContent(selectedFeature)}</div>
+        <div className="item-feature-content">
+          {renderFeatureContent(selectedFeature)}
+        </div>
       </div>
     </div>
   );
