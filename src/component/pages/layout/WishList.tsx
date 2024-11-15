@@ -1,72 +1,36 @@
 import Rating from "./Rating";
 import { Image } from "primereact/image";
-import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import { useContext } from "react";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
+import { WishContext } from "../../context/WishContext";
 
 const WishList: React.FC = () => {
-  const [items, setitem] = useState<any>([]);
-  const { authToken } = useContext(AuthContext);
+  const {WishItem, handleWishList} = useContext(WishContext)
 
-  const handleDelete = (item_id: number) => {
-    axios
-      .post(
-        "http://127.0.0.1:8000/api/wish-list/",
-        {
-          item: item_id,
-        },
-        {
-          headers: {
-            Authorization: `Token ${authToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        setitem((prevItems:any) => prevItems.filter((item:any) => item.item.id !== item_id));
-      })
-      .catch((error) => {
-        console.error("There was an error adding the WishListt!", error);
-        return 0;
-      });
-  };
 
-  useEffect(() => {
-    if (authToken) {
-      axios
-        .get("http://127.0.0.1:8000/api/wish-list/", {
-          headers: {
-            Authorization: `Token ${authToken}`,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          setitem(res.data);
-        })
-        .catch((error) => {
-          console.error(
-            "There was an error fetching the Cart Quantity Item!",
-            error
-          );
-        });
-    }
-  }, [authToken]);
 
-  if(items.length < 1 ){
+  if(WishItem.length < 1 ){
     return (
       <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "80vh" }}>
         <h1 className="text-center">Your Wish List is Empty</h1>
       </div>    
     )
   }
+  if(!WishList ){
+    return (
+      <div>wait</div>
+    )
+  }
+
+  const handleRemoveWish = (id:number) => {
+    handleWishList(id)
+  }
 
   return (
-    <div className="container">
+    <div className="container " style={{minHeight:"80vh"}}>
   <h2 className="m-2">Wish List</h2>
-  {items.map((item: any, index: number) => (
+  {WishItem.map((item: any, index: number) => (
     <div
       key={index}
       className="p-3 w-100 m-1 shadow-sm p-0"
@@ -140,7 +104,7 @@ const WishList: React.FC = () => {
             borderColor: "#008374",
           }}
           icon="pi pi-trash"
-          onClick={() => handleDelete(item.item.id)}
+          onClick={() => handleRemoveWish(item.item.id)}
         />
       </div>
     </div>

@@ -1,0 +1,17 @@
+.primary{
+    color:#008374
+}
+.secondary{
+    color:#EC4444
+}
+.primaryBackground{
+    background-color:#008374;
+    color:white
+}
+.secondaryBackground{
+    background-color:#EC4444
+}
+
+a {
+    text-decoration: none;
+}

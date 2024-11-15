@@ -41,7 +41,7 @@ const CartBill: React.FC<BillProp> = ({ items }) => {
         <hr />
         <div className="d-flex justify-content-between mb-2">
           <div>Price ({items.length} items)</div>
-          <div className="text-muted">₹{actualPrice}</div>
+          <div className="text-muted">₹{originalPrice}</div>
         </div>
         <div className="d-flex justify-content-between mb-2">
           <div>Discount</div>

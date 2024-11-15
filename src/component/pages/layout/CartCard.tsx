@@ -3,8 +3,8 @@ import Rating from "./Rating";
 import { Image } from "primereact/image";
 import { Button } from "primereact/button";
 import { ButtonGroup } from "primereact/buttongroup";
-import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState, useCallback } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const custom_styles = {
   backgroundColor: "#008374",
@@ -13,7 +13,7 @@ const custom_styles = {
 };
 
 const CartCard: React.FC<any> = ({ item }) => {
-  const { addCartDetails } = useContext(AuthContext);
+  const { addCartDetails } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(item.quantity);
 
   const handleQuantityChange = useCallback(

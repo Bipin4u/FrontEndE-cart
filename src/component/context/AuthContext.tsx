@@ -3,32 +3,28 @@ import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface AuthContextType {
-    user: String;
-    authToken: String;
-    cartItem: any
-    cartQuantity:number;
-    loginUser: (credentials: { username: String; password: String }) => Promise<void>;
-    userLogout: () => void;
-    addCartDetails: (item_id: number, type:string) => void; 
-  }
-  
-  const defaultContextValue: AuthContextType = {
-    user: "",
-    cartItem: {},
-    cartQuantity: 0,
-    authToken: "",
-    loginUser: async () => {},
-    userLogout: () => {},
-    addCartDetails: (item_id: number, type:string) => {}, 
-  };
+  user: String;
+  authToken: String;
+  loginUser: (credentials: {
+    username: String;
+    password: String;
+  }) => Promise<void>;
+  userLogout: () => void;
+}
+
+const defaultContextValue: AuthContextType = {
+  user: "",
+
+  authToken: "",
+  loginUser: async () => {},
+  userLogout: () => {},
+};
 
 export const AuthContext = createContext<AuthContextType>(defaultContextValue);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<String>("");
   const [authToken, setauthToken] = useState<String>("");
-  const [cartQuantity, setCartQuantity] = useState<number>(0);
-  const [cartItem,setCartItem] = useState([])
 
   const navigate = useNavigate();
 
@@ -39,26 +35,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       retrieveUserDetails(token);
     }
   }, []);
-
-  useEffect(()=>{
-    if (authToken) {
-        axios
-          .get("http://127.0.0.1:8000/api/getcart/", {
-            headers: {
-              Authorization: `Token ${authToken}`,
-              "Content-Type": "application/json",
-            },
-          })
-          .then((res) => {
-            setCartQuantity(res.data.length);
-            setCartItem(res.data)
-          })
-          .catch((error) => {
-            console.error("There was an error fetching the Cart Quantity Item!", error);
-
-          });
-      }
-  },[authToken,cartQuantity])
 
   const loginUser = async ({
     username,
@@ -109,36 +85,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const addCartDetails = (item_id: number, type:string) => {
-    axios
-      .post(
-        `http://127.0.0.1:8000/api/cart/?type=${type}`,
-        {
-          item: item_id, // Pass the item ID as part of the request body
-        },
-        {
-          headers: {
-            Authorization: `Token ${authToken}`, // Pass the headers as a separate parameter
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        setCartQuantity(qty=>qty+1)
-        return 1
-      })
-      .catch((error) => {
-        console.error("There was an error adding the item to the cart!", error);
-        return 0
-      });
-  };
-
-
-
-
-
-
   const userLogout = () => {
     setUser("");
     localStorage.removeItem("authToken");
@@ -151,9 +97,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     authToken,
     loginUser,
     userLogout,
-    addCartDetails,
-    cartQuantity,
-    cartItem
   };
 
   return (

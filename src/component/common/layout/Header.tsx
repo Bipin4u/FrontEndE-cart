@@ -5,9 +5,12 @@ import { AuthContext } from "../../context/AuthContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Badge } from "primereact/badge";
 import SideBar from "./SideBar";
+import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
-  const { user, userLogout, cartQuantity } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const {  cartQuantity } = useContext(CartContext);
+
   const [menu, setMenu] = React.useState("home");
   const location = useLocation();
 
@@ -46,7 +49,7 @@ const Header = () => {
                 {menu === "contact" && <hr className="noborder_hr" />}
               </li>
             </div>
-            <div className="LoginCartLayout">
+            <div className="LoginCartLayout" style={{cursor:"pointer"}}>
               <div className="CartLayout">
                 <Link to="/cart" style={{ textDecoration: "none", color:'white' }}>
                   <i

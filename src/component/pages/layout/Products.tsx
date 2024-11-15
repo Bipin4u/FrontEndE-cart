@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
 import "../css/products.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Rating from './Rating'
 
 interface  productCategory {

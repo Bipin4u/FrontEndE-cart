@@ -5,42 +5,42 @@ import { Link } from "react-router-dom";
 
 const items = [
   {
-    cardimg: require("../../assets/images/sofa.png"),
+    cardimg: "sofa.png",
     title: "Sofa",
     type:'sofa'
   },
   {
-    cardimg: require("../../assets/images/recliner.png"),
+    cardimg: "recliner.png",
     title: "Recliner",
     type:'recliner'
   },
   {
-    cardimg: require("../../assets/images/dining.png"),
+    cardimg: "dining.png",
     title: "Dyning",
     type:'dining'
   },
   {
-    cardimg: require("../../assets/images/bed.png"),
+    cardimg: "bed.png",
     title: "Bed",
     type:'bed'
   },
   {
-    cardimg: require("../../assets/images/desk.png"),
+    cardimg: "desk.png",
     title: "Office & Study Table",
     type: 'office_study_table'
   },
   {
-    cardimg: require("../../assets/images/woodchair.png"),
+    cardimg: "woodchair.png",
     title: "Chair",
     type:'chair'
   },
   {
-    cardimg: require("../../assets/images/table.png"),
+    cardimg: "table.png",
     title: "Center Table",
     type:'center_table'
   },
   {
-    cardimg: require("../../assets/images/office_chair.png"),
+    cardimg: "office_chair.png",
     title: "Office Chair",
     type: "office_chair"
   },
