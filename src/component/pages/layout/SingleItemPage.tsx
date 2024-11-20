@@ -7,11 +7,13 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { CartContext } from "../../context/CartContext";
 import { WishContext } from "../../context/WishContext";
+import Review from "./Review";
 
 const SingleItemPage = () => {
   const { addCartDetails, cartId } = useContext(CartContext);
   const { id } = useParams();
   const [item, setItem] = useState<any>();
+
   const [loading, setLoading] = useState(true);
   const [selectedFeature, setSelectedFeature] = useState("features"); // New state to track selected feature
   const [mainImage, setMainImage] = useState("");
@@ -94,6 +96,10 @@ const SingleItemPage = () => {
         console.error("Error fetching item:", error);
       });
   }, [id]);
+
+
+
+
 
   const addCartDetail = async (item: number) => {
     const type = "increment";
@@ -220,6 +226,9 @@ const SingleItemPage = () => {
         <div className="item-feature-content">
           {renderFeatureContent(selectedFeature)}
         </div>
+      </div>
+      <div>
+          <Review id={id} />
       </div>
     </div>
   );

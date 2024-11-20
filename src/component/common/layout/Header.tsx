@@ -15,7 +15,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="headerContainer">
+    <header style={{ textAlign: "center", left: "0", right: "0", top: "0", zIndex:"1000" }} className="headerContainer">
       <div className="HeaderCardLayout">
         <div className="CompanyNameLayout">
           <p>Sri Ram and Co</p>

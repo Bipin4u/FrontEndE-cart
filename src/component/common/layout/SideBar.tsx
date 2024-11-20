@@ -36,7 +36,11 @@ export default function RightSidebarDemo() {
     {
       label: "My Orders",
       icon: "pi pi-file-check",
-      command: () => myOrder(),
+      command: () => {
+        navigate('/orders');
+        setVisibleRight(false);
+
+      }
     },
     {
       label: "Cart",

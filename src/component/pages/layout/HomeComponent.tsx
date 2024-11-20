@@ -4,7 +4,6 @@ import axios from 'axios';
 import LandingSection from './LandingSection';
 import Category from './Category'
 import Products from './Products';
-import WhatWeDo from './WhatWeDo';
 
 function HomeComponent() {
   const [popularFilterText, setPopularFilterText] = useState("sofa");

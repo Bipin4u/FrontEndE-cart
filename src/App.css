@@ -1,17 +1,30 @@
 .primary{
-    color:#008374
+  color:#008374
 }
 .secondary{
-    color:#EC4444
+  color:#EC4444
 }
 .primaryBackground{
-    background-color:#008374;
-    color:white
+  background-color:#008374;
+  color:white
 }
 .secondaryBackground{
-    background-color:#EC4444
+  background-color:#EC4444
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #5ba185, #317e62, #1c6650, #07473f);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #5ba185, #317e62, #1c6650, #07473f);
+
+
 }
