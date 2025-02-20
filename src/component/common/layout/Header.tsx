@@ -32,7 +32,7 @@ const Header = () => {
               </li>
               <li onClick={() => setMenu("category")}>
                 <Link className="MenuCardLayoutli" to="/category">
-                  About us
+                  About
                 </Link>
                 {menu === "category" && <hr className="noborder_hr" />}
               </li>

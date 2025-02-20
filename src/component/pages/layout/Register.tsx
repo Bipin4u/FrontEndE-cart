@@ -4,16 +4,35 @@ import "../../../App.css";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import data from '../../../../data.json'
+import data from "../../../../data.json";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const validatePassword = (value: string) => {
+    setPassword(value);
+
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!passwordRegex.test(value)) {
+      setError(
+        "Password must be at least 8 characters long, include an uppercase, a lowercase, a number, and a special character."
+      );
+    } else {
+      setError("");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (error) {
+      return;
+    }
     try {
       const response = await axios.post(`${data.url}/auth/users/`, {
         username: username,
@@ -62,7 +81,7 @@ const Register = () => {
               <InputText
                 id="Email"
                 placeholder="Email"
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -80,10 +99,12 @@ const Register = () => {
                 placeholder="Password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => validatePassword(e.target.value)}
                 required
+                className={`p-inputtext ${error ? "border-red-500" : ""}`}
               />
             </div>
+            {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
           </div>
 
           <div className="d-grid gap-2 m-3 mt-5">
@@ -93,7 +114,12 @@ const Register = () => {
 
         <div className="d-flex justify-content-center mt-5">
           <div className="m-2 mx-4">Already have an account?</div>
-          <Button onClick={() => navigate("/login")} label="Login" severity="danger" outlined />
+          <Button
+            onClick={() => navigate("/login")}
+            label="Login"
+            severity="danger"
+            outlined
+          />
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     username: String;
     password: String;
   }) => {
-    try {
+    
       const response = await axios.post(
         `${data.url}/auth/token/login`,
         {
@@ -61,12 +61,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setauthToken(response.data.auth_token);
       await retrieveUserDetails(response.data.auth_token);
       navigate("/");
-    } catch (error: any) {
-      console.error(
-        "Login error:",
-        error.response ? error.response.data : error.message
-      );
-    }
+    
   };
 
   const retrieveUserDetails = async (token: String) => {

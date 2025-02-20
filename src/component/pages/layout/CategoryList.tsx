@@ -19,9 +19,6 @@ function Products() {
   console.log(pagenumber);
 
   useEffect(() => {
-    console.log(
-      `${data.url}/api/category/${category}/?page=${pagenumber}&sort=${sort}`
-    );
     axios
       .get(
         `${data.url}/api/category/${category}/?page=${pagenumber}&sort=${sort}`
@@ -35,6 +32,8 @@ function Products() {
         console.error("There was an error fetching the items!", error);
       });
   }, [sort, pagenumber]);
+
+
 
   return (
     <div className="Product_container container">

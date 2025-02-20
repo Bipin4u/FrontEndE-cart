@@ -116,7 +116,7 @@ const SingleItemPage = () => {
   if (!item) return <p>Item not found</p>;
 
   return (
-    <div className="item-detail">
+    <div style={{minHeight:'85vh'}} className="item-detail">
       <Toast ref={toast} />
       <div className="item-images">
         <div className="item-thumbnails">
