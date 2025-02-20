@@ -10,7 +10,7 @@ const LandingSection = () => {
       <section className="SectionContainer">
         <div className="landing_section">
           <p>Welcome to </p>
-          <p>Sri Ram & Co</p>
+          <p>Bipin's Demo Project</p>
           <p>
             Experience Superior Craftsmanship and Stylish Designs at Sri Ram and
             Co – Your Home,<br/> Our Passion

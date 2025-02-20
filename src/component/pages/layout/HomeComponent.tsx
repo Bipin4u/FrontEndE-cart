@@ -4,6 +4,7 @@ import axios from 'axios';
 import LandingSection from './LandingSection';
 import Category from './Category'
 import Products from './Products';
+import data from '../../../../data.json'
 
 function HomeComponent() {
   const [popularFilterText, setPopularFilterText] = useState("sofa");
@@ -15,7 +16,7 @@ function HomeComponent() {
 
 
   useEffect(() => {    
-    axios.get(`http://127.0.0.1:8000/api/popular/?type=${popularFilterText}`)
+    axios.get(`${data.url}/api/popular/?type=${popularFilterText}`)
       .then(res => {
         setPopular(res.data);  
       })
@@ -25,7 +26,7 @@ function HomeComponent() {
   }, [popularFilterText]);
 
   useEffect(() => {    
-    axios.get(`http://127.0.0.1:8000/api/discount/?type=${OffersfilterText}`)
+    axios.get(`${data.url}/api/discount/?type=${OffersfilterText}`)
       .then(res => {
         setOffers(res.data); 
       })
@@ -35,7 +36,7 @@ function HomeComponent() {
   }, [OffersfilterText]);
 
   useEffect(() => {    
-    axios.get(`http://127.0.0.1:8000/api/trending/?type=${trendingfilterText}`)
+    axios.get(`${data.url}/api/trending/?type=${trendingfilterText}`)
       .then(res => {
         setTrending(res.data); 
         console.log(trending)

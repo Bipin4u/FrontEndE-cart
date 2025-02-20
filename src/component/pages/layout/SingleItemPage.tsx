@@ -8,6 +8,7 @@ import { Toast } from "primereact/toast";
 import { CartContext } from "../../context/CartContext";
 import { WishContext } from "../../context/WishContext";
 import Review from "./Review";
+import data from '../../../../data.json'
 
 const SingleItemPage = () => {
   const { addCartDetails, cartId } = useContext(CartContext);
@@ -81,7 +82,7 @@ const SingleItemPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/item/${id}/`)
+      .get(`${data.url}/api/item/${id}/`)
       .then((res) => {
         setItem(res.data);
         setMainImage(res.data.images[0].image_path);

@@ -18,7 +18,7 @@ const Header = () => {
     <header style={{ textAlign: "center", left: "0", right: "0", top: "0", zIndex:"1000" }} className="headerContainer">
       <div className="HeaderCardLayout">
         <div className="CompanyNameLayout">
-          <p>Sri Ram and Co</p>
+          <p>Bipin's Project</p>
         </div>
 
         {user ? (
@@ -32,15 +32,9 @@ const Header = () => {
               </li>
               <li onClick={() => setMenu("category")}>
                 <Link className="MenuCardLayoutli" to="/category">
-                  Category
+                  About us
                 </Link>
                 {menu === "category" && <hr className="noborder_hr" />}
-              </li>
-              <li onClick={() => setMenu("product")}>
-                <Link className="MenuCardLayoutli" to="/product">
-                  Products
-                </Link>
-                {menu === "product" && <hr className="noborder_hr" />}
               </li>
               <li onClick={() => setMenu("contact")}>
                 <Link className="MenuCardLayoutli" to="/contact">

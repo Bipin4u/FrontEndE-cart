@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import data from '../../../../data.json'
 
 const Orders: React.FC = () => {
   const { authToken } = useContext(AuthContext);
@@ -23,7 +24,7 @@ const Orders: React.FC = () => {
   useEffect(() => {
     if (authToken) {
       axios
-        .get("http://127.0.0.1:8000/api/orders/", {
+        .get(`${data.url}/api/orders/`, {
           headers: {
             Authorization: `Token ${authToken}`,
             "Content-Type": "application/json",

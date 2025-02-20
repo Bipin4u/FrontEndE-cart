@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import data from '../../../../data.json'
 
 interface ReviewProps {
-    id: string; 
+    id: string | undefined; 
   }
   
   const Review: React.FC<ReviewProps> = ({ id }) => {
@@ -12,7 +13,7 @@ interface ReviewProps {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/review/${id}`)
+      .get(`${data.url}/api/review/${id}`)
       .then((res) => {
         setReview(res.data);
       })

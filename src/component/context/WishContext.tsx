@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useState, useEffect, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import data from '../../../data.json'
 
 export interface WishContextType {
   WishItem: any;
@@ -27,7 +28,7 @@ const WishProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (authToken) {
       axios
-        .get("http://127.0.0.1:8000/api/wish-list/", {
+        .get(`${data.url}/api/wish-list/`, {
           headers: {
             Authorization: `Token ${authToken}`,
             "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const WishProvider = ({ children }: { children: React.ReactNode }) => {
   const handleWishList = (item_id: number) => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/wish-list/",
+        `${data.url}/api/wish-list/`,
         {
           item: item_id,
         },

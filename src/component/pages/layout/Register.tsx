@@ -4,6 +4,7 @@ import "../../../App.css";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import data from '../../../../data.json'
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/auth/users/", {
+      const response = await axios.post(`${data.url}/auth/users/`, {
         username: username,
         email: email,
         password: password,

@@ -10,7 +10,7 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import data from '../../../../data.json'
 
 const ReviewRating = () => {
   const [value, setValue] = useState<number>(0);
@@ -21,7 +21,6 @@ const ReviewRating = () => {
   const { title, image, id } = location.state || {};
   const toast = useRef<Toast>(null);
   const { authToken } = useContext(AuthContext);
-  const navigate = useNavigate();
   const [type, setType] = useState("Submit");
   const [ID, setID] = useState<number>();
 
@@ -38,7 +37,7 @@ const ReviewRating = () => {
     if (type == "Submit") {
       axios
         .post(
-          "http://127.0.0.1:8000/api/review/",
+          `${data.url}/api/review/`,
           {
             item: id,
             username: name,
@@ -70,7 +69,7 @@ const ReviewRating = () => {
         console.log('edit Called')
       axios
         .put(
-          `http://127.0.0.1:8000/api/update-review/${ID}`,
+          `${data.url}/api/update-review/${ID}`,
           {
             id : ID,
             item: id,
@@ -105,7 +104,7 @@ const ReviewRating = () => {
   useEffect(() => {
     if (authToken) {
       axios
-        .get(`http://127.0.0.1:8000/api/my-review/${id}`, {
+        .get(`${data.url}/api/my-review/${id}`, {
           headers: {
             Authorization: `Token ${authToken}`,
           },
@@ -126,7 +125,7 @@ const ReviewRating = () => {
   }, [authToken]);
 
   return (
-    <div className="mx-5 my-4 card p-3">
+    <div style={{height:"80vh"}} className="mx-5 my-4 card p-3 ">
       <Toast ref={toast} />
       <div className="card">
         <div className="p-2 d-flex">

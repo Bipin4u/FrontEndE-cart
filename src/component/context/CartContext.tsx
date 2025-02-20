@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useState, useEffect, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import data from '../../../data.json'
 
 export interface CartContextType {
     cartItem: any,
@@ -28,7 +29,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(()=>{
     if (authToken) {
         axios
-          .get("http://127.0.0.1:8000/api/getcart/", {
+          .get(`${data.url}/api/getcart/`, {
             headers: {
               Authorization: `Token ${authToken}`,
               "Content-Type": "application/json",
@@ -49,7 +50,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const addCartDetails = (item_id: number, type:string) => {
     axios
       .post(
-        `http://127.0.0.1:8000/api/cart/?type=${type}`,
+        `${data.url}/api/cart/?type=${type}`,
         {
           item: item_id, 
         },

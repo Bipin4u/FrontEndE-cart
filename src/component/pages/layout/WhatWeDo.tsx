@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import '../css/WhatWeDo.css';
-import customDesignImage from '../../assets/images/Gemini_Generated_Image_8spl6a8spl6a8spl.jpeg'; // Update with actual image path
-import bulkProductionImage from '../../assets/images/Gemini_Generated_Image_hzdvhlhzdvhlhzdv.jpeg'; // Update with actual image path
-import globalDeliveryImage from '../../assets/images/Gemini_Generated_Image_7a8o9d7a8o9d7a8o.jpeg'; // Update with actual image path
+import customDesignImage from '../../../assets/Gemini_Generated_Image_8spl6a8spl6a8spl.jpeg'; // Update with actual image path
+import bulkProductionImage from '../../../assets/Gemini_Generated_Image_hzdvhlhzdvhlhzdv.jpeg'; // Update with actual image path
+import globalDeliveryImage from '../../../assets/Gemini_Generated_Image_7a8o9d7a8o9d7a8o.jpeg'; // Update with actual image path
 
 const WhatWeDo = () => {
     const { ref: ref1, inView: inView1 } = useInView({

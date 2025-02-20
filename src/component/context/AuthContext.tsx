@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import data from '../../../data.json'
 
 export interface AuthContextType {
   user: String;
@@ -45,7 +46,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/token/login",
+        `${data.url}/auth/token/login`,
         {
           username: username,
           password: password,
@@ -70,7 +71,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const retrieveUserDetails = async (token: String) => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/auth/users/me/", {
+      const response = await axios.get(`${data.url}/auth/users/me/`, {
         headers: {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",

@@ -6,6 +6,7 @@ import axios from "axios";
 import Rating from "./Rating";
 import Paginater from "./Paginater";
 import Filter from "./Filter";
+import data from '../../../../data.json'
 
 function Products() {
   const { category } = useParams();
@@ -19,11 +20,11 @@ function Products() {
 
   useEffect(() => {
     console.log(
-      `http://127.0.0.1:8000/api/category/${category}/?page=${pagenumber}&sort=${sort}`
+      `${data.url}/api/category/${category}/?page=${pagenumber}&sort=${sort}`
     );
     axios
       .get(
-        `http://127.0.0.1:8000/api/category/${category}/?page=${pagenumber}&sort=${sort}`
+        `${data.url}/api/category/${category}/?page=${pagenumber}&sort=${sort}`
       )
       .then((res) => {
         setItems(res.data.items);
