@@ -12,7 +12,7 @@ const LandingSection = () => {
           <p>Welcome to </p>
           <p>Bipin's Demo Project</p>
           <p>
-            Experience Superior Craftsmanship and Stylish Designs at Your Home,<br/> Our Passion
+            Experience Superior Craftsmanship and Stylish Designs at Your Home.<br/> Our Passion, Your Comfort
           </p>
           <div className="Watchvedio">
             {/* <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ">
