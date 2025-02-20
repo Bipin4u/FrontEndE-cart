@@ -1,4 +1,3 @@
-import { TabMenu } from "primereact/tabmenu";
 import "primereact/resources/themes/saga-blue/theme.css"; // Import your desired theme
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";

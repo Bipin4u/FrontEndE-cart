@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,10 +11,7 @@ export default function RightSidebarDemo() {
   const { userLogout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const myOrder = () => {
-    setVisibleRight(false);
-    navigate("/myorder");
-  };
+ 
 
   const items = [
     {

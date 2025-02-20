@@ -31,7 +31,7 @@ const Cart = () => {
         {/* Cart items section */}
         <div className="col-lg-8 col-md-7 mb-3">
           <div className="p-3 border rounded bg-light">
-            {cartItem.map((item) => (
+            {cartItem.map((item:any) => (
               <div key={item.id} className="mb-3 border-bottom pb-2">
                 <CartCard item={item} />
               </div>

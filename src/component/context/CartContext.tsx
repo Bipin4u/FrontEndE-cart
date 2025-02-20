@@ -14,7 +14,7 @@ export interface CartContextType {
     cartItem: {},
     cartId:[],
     cartQuantity: 0,
-    addCartDetails: (item_id: number, type:string) => {}, 
+    addCartDetails: () => {}, 
   };
 
 export const CartContext = createContext<CartContextType>(defaultContextValue);

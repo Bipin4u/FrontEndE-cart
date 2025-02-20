@@ -12,7 +12,7 @@ export interface WishContextType {
 const defaultContextValue: WishContextType = {
   WishItem: {},
   wishId:[],
-  handleWishList: (item_id: number) => {},
+  handleWishList: () => {},
 };
 
 export const WishContext = createContext<WishContextType>(defaultContextValue);
@@ -62,7 +62,7 @@ const WishProvider = ({ children }: { children: React.ReactNode }) => {
           },
         }
       )
-      .then((res) => {
+      .then(() => {
         setcount(prev=>prev+1)
       })
       .catch((error) => {
