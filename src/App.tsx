@@ -17,6 +17,7 @@ import WishList from "./component/pages/layout/WishList";
 import Orders from "./component/pages/layout/Orders";
 import ReviewRating from "./component/pages/layout/ReviewRating";
 import WhatWeDo from "./component/pages/layout/WhatWeDo";
+import Contact from "./component/pages/layout/Contact"
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />}>
                   <Route path="/" element={<HomeComponent />} />
+                  <Route path="/contact" element={<Contact />} />
                   <Route path="/category" element={<WhatWeDo />} />
                   <Route path="/category-list/:category" element={<CategoryList />} />
                   <Route path="/cart" element={<Cart />} />

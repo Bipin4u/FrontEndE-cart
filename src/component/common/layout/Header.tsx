@@ -38,7 +38,7 @@ const Header = () => {
               </li>
               <li onClick={() => setMenu("contact")}>
                 <Link className="MenuCardLayoutli" to="/contact">
-                  Contact
+                  Contact me
                 </Link>
                 {menu === "contact" && <hr className="noborder_hr" />}
               </li>
