@@ -36,7 +36,7 @@ const CartCard: React.FC<any> = ({ item }) => {
   return (
     <div>
       <Card className="w-100 m-2 shadow-sm" style={{ borderRadius: "10px" }}>
-        <div className="d-flex">
+        <div className="d-sm-block d-lg-flex">
           <div>
             <div
               className="d-flex justify-content-center align-items-center"
@@ -58,8 +58,8 @@ const CartCard: React.FC<any> = ({ item }) => {
               />
             </div>
           </div>
-          <div className="ms-3 w-100">
-            <p className="h5" style={{ fontWeight: "600", fontSize: "1.2rem" }}>
+          <div className="ms-3 ms-sm-0 w-100">
+            <p className="h5">
               {item.item.name}
             </p>
             <div className="d-flex flex-column">
@@ -75,7 +75,7 @@ const CartCard: React.FC<any> = ({ item }) => {
                 </div>
               </div>
 
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="d-lg-flex d-sm-block justify-content-between align-items-center">
                 <div className="product_price_container">
                   <p className="product-discount_price">
                     {item.item.discount_price.toLocaleString()}
@@ -87,7 +87,7 @@ const CartCard: React.FC<any> = ({ item }) => {
                     {item.item.discount.toLocaleString()}% OFF
                   </p>
                 </div>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-lg-center align-items-center">
                   <ButtonGroup>
                     <Button
                       className="mx-1 text-white"
@@ -107,15 +107,16 @@ const CartCard: React.FC<any> = ({ item }) => {
                       style={custom_styles}
                       onClick={() => handleQuantityChange('increment')}
                     />
-                  </ButtonGroup>
-                </div>
-                <Button
-                  className="mx-2 rounded-2 text-white"
+                                   <Button
+                  className="mx-2 mt-sm-1 rounded-2 text-white"
                   label="Remove"
                   style={{ backgroundColor: "#008374", borderColor: "#008374" }}
                   icon="pi pi-trash"
                   onClick={handleDelete}
                 />
+                  </ButtonGroup>
+                </div>
+ 
               </div>
             </div>
           </div>

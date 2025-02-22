@@ -15,7 +15,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header style={{ textAlign: "center", left: "0", right: "0", top: "0", zIndex:"1000" }} className="headerContainer">
+    <header style={{height:"9vh", textAlign: "center", backgroundColor:'#008374' }} >
       <div className="HeaderCardLayout">
         <div className="CompanyNameLayout">
           <p>Bipin's Project</p>
@@ -86,4 +86,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

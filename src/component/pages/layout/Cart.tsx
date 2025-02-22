@@ -25,7 +25,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="container my-4" style={{ minHeight: "75vh" }}>
+    <div className="container my-4" style={{ minHeight: "85vh" }}>
       <h2 className="text-center mb-4">Your Cart</h2>
       <div className="row">
         {/* Cart items section */}

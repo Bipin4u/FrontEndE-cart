@@ -51,10 +51,10 @@ const Register = () => {
 
   return (
     <div
-      style={{ height: "75vh" }}
-      className="d-flex m-5 align-items-center justify-content-center "
+      style={{ height: "85vh" }}
+      className="d-flex align-items-center justify-content-center"
     >
-      <div className="w-50 text-center m-auto">
+      <div className=" text-center ">
         <div className="h3 mb-4">Please login to your account</div>
         <form className="Login-form" onSubmit={handleSubmit}>
           <div className="m-4">

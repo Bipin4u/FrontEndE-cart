@@ -95,6 +95,7 @@ const SingleItemPage = () => {
       })
       .catch((error) => {
         console.error("Error fetching item:", error);
+        setLoading(false);
       });
   }, [id]);
 
@@ -112,8 +113,12 @@ const SingleItemPage = () => {
       life: 1000,
     });
   };
-  if (loading) return <p>Loading...</p>;
-  if (!item) return <p>Item not found</p>;
+  if (loading) 
+    return (
+      <div style={{height:"85vh"}} className="d-flex justify-content-center align-items-center vh-85">
+        <i className="pi pi-spin pi-spinner fs-2" style={{ fontSize: '4rem' }}></i>
+      </div>
+    );
 
   return (
     <div style={{minHeight:'85vh'}} className="item-detail">

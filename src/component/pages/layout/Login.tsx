@@ -33,8 +33,9 @@ const Login = () => {
 
   return (
  
-<div style={{ height: "75vh" }} className="d-flex m-5 align-items-center justify-content-center">
-  <div className="w-50  text-center m-auto">
+<div style={{ height: "85vh" }} 
+className="d-flex align-items-center justify-content-center">
+  <div className="text-center ">
     <div className="h3 mb-4">Please login to your account</div>
     <Toast ref={toast} />
     <form className="Login-form" onSubmit={handleLogin}>

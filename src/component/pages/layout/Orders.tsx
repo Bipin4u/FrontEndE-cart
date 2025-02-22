@@ -47,7 +47,7 @@ const Orders: React.FC = () => {
   }
 
   return (
-    <div className="container" style={{ minHeight: "80vh" }}>
+    <div className="container" style={{ minHeight: "85vh" }}>
   <h2 className="m-2">My Orders</h2>
   {item.map((order: any, index: number) => (
     <div
