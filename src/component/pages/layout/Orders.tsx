@@ -11,7 +11,6 @@ const Orders: React.FC = () => {
   const { authToken } = useContext(AuthContext);
   const [item, setItem] = useState<any>();
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(true)
 
   const handleNavigate = (name:string,img:string,id:number) => {
     navigate('/reviewrating', {
@@ -33,12 +32,10 @@ const Orders: React.FC = () => {
           },
         })
         .then((res) => {
-          setLoading(false)
           setItem(res.data);
           console.log('orders',res.data)
         })
         .catch((error) => {
-          setLoading(false)
           console.error("There was an error fetching the Order Item!", error);
         });
     }
