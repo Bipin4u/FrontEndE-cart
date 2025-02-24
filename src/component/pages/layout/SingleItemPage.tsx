@@ -9,6 +9,9 @@ import { CartContext } from "../../context/CartContext";
 import { WishContext } from "../../context/WishContext";
 import Review from "./Review";
 import data from '../../../../data.json'
+import Loader from "./Loader";
+import { ProgressBar } from 'primereact/progressbar';
+
 
 const SingleItemPage = () => {
   const { addCartDetails, cartId } = useContext(CartContext);
@@ -21,6 +24,7 @@ const SingleItemPage = () => {
   const toast = useRef<Toast>(null);
   const { handleWishList, wishId } = useContext(WishContext);
   const navigate = useNavigate()
+
 
   const renderFeatureContent = (type: string) => {
     switch (type) {
@@ -76,7 +80,7 @@ const SingleItemPage = () => {
     }
   };
 
-  const handleWish = (item_id: number) => {
+  const handleWish = (item_id: number) => {    
     handleWishList(item_id);
   };
 
@@ -99,10 +103,6 @@ const SingleItemPage = () => {
       });
   }, [id]);
 
-
-
-
-
   const addCartDetail = async (item: number) => {
     const type = "increment";
     addCartDetails(item, type);
@@ -115,13 +115,11 @@ const SingleItemPage = () => {
   };
   if (loading) 
     return (
-      <div style={{height:"85vh"}} className="d-flex justify-content-center align-items-center vh-85">
-        <i className="pi pi-spin pi-spinner fs-2" style={{ fontSize: '4rem' }}></i>
-      </div>
+      <Loader />
     );
 
   return (
-    <div style={{minHeight:'85vh'}} className="item-detail">
+    <div style={{minHeight:'85vh'}} className="item-detail my-4">
       <Toast ref={toast} />
       <div className="item-images">
         <div className="item-thumbnails">
@@ -145,6 +143,7 @@ const SingleItemPage = () => {
               wishId.includes(item.id) ? "pi pi-heart-fill secondary" : "pi pi-heart secondary"
             }
             style={{
+              cursor:'pointer',
               fontSize: "2.5rem",
               position: "absolute",
               top: "10px",

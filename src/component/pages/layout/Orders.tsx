@@ -5,11 +5,13 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import data from '../../../../data.json'
+import Loader from "./Loader";
 
 const Orders: React.FC = () => {
   const { authToken } = useContext(AuthContext);
   const [item, setItem] = useState<any>();
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(true)
 
   const handleNavigate = (name:string,img:string,id:number) => {
     navigate('/reviewrating', {
@@ -31,10 +33,12 @@ const Orders: React.FC = () => {
           },
         })
         .then((res) => {
+          setLoading(false)
           setItem(res.data);
           console.log('orders',res.data)
         })
         .catch((error) => {
+          setLoading(false)
           console.error("There was an error fetching the Order Item!", error);
         });
     }
@@ -42,9 +46,10 @@ const Orders: React.FC = () => {
 
   if(!authToken || !item){
     return (
-        <div>wait</div>
+        <Loader />
     )
   }
+
 
   return (
     <div className="container" style={{ minHeight: "85vh" }}>

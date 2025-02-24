@@ -3,6 +3,22 @@ import { createContext, useState, useEffect, useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import data from '../../../data.json'
 
+interface WishType {
+    id: number,
+    user: number,
+    item: {
+        id: number,
+        name: string,
+        type: string,
+        rating: number,
+        price: string,
+        reviews_count: number,
+        discount: string,
+        first_image: string,
+        discount_price: number
+    }
+}
+
 export interface WishContextType {
   WishItem: any;
   wishId:any,
@@ -18,9 +34,9 @@ const defaultContextValue: WishContextType = {
 export const WishContext = createContext<WishContextType>(defaultContextValue);
 
 const WishProvider = ({ children }: { children: React.ReactNode }) => {
-  const [WishItem, setWishItem] = useState([]);
-  const [count, setcount] = useState(0);
-  const [wishId, setWishId] = useState([]);
+  const [WishItem, setWishItem] = useState<Array<WishType>>([]);
+  const [count, setcount] = useState<number>(0);
+  const [wishId, setWishId] = useState<Array<number>>([]);
 
 
   const { authToken } = useContext(AuthContext);
@@ -37,7 +53,8 @@ const WishProvider = ({ children }: { children: React.ReactNode }) => {
         .then((res) => {
           setWishItem(res.data);
           setWishId(res.data.map((da: any) => da.item.id));
-          console.log(wishId)
+          console.log(res.data)
+          console.log(res.data)
         })
         .catch((error) => {
           console.error(

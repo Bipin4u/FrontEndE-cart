@@ -7,6 +7,7 @@ import Rating from "./Rating";
 import Paginater from "./Paginater";
 import Filter from "./Filter";
 import data from '../../../../data.json'
+import Loader from "./Loader";
 
 function Products() {
   const { category } = useParams();
@@ -37,9 +38,7 @@ function Products() {
 
   if (loading) 
     return (
-      <div style={{height:"85vh"}} className="d-flex justify-content-center align-items-center vh-85">
-        <i className="pi pi-spin pi-spinner fs-2" style={{ fontSize: '4rem' }}></i>
-      </div>
+      <Loader />
     );
   
 

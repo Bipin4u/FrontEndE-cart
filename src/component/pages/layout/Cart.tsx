@@ -18,7 +18,7 @@ const Cart = () => {
   // If cartItem is an empty array, show "Your Cart is Empty"
   if (cartItem.length < 1) {
     return (
-      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "80vh" }}>
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "85vh" }}>
         <h1 className="text-center">Your Cart is Empty</h1>
       </div>
     );
