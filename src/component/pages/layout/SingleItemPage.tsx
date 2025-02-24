@@ -10,8 +10,6 @@ import { WishContext } from "../../context/WishContext";
 import Review from "./Review";
 import data from '../../../../data.json'
 import Loader from "./Loader";
-import { ProgressBar } from 'primereact/progressbar';
-
 
 const SingleItemPage = () => {
   const { addCartDetails, cartId } = useContext(CartContext);
